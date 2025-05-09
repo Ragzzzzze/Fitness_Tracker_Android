@@ -1,6 +1,5 @@
-package com.example.fitnesstracker.ui.theme
+package com.example.fitnesstracker.presentation.ui.theme
 
-import android.hardware.camera2.params.BlackLevelPattern
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -15,3 +14,4 @@ val White = Color(0xFFFFFFFF)
 val Primary = Color(0xFF4B09F3)
 val Black = Color(0xFF101010)
 val Grey = Color(0xFF808080)
+val Line = Color(0xFFF0F0F0)

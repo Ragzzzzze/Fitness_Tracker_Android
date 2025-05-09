@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.fitnesstracker.presentation.ui.components
 
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -6,9 +6,6 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -26,13 +23,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fitnesstracker.ui.theme.Grey
-import com.example.fitnesstracker.ui.theme.Primary
+import com.example.fitnesstracker.R
+import com.example.fitnesstracker.presentation.ui.theme.Grey
+import com.example.fitnesstracker.presentation.ui.theme.Primary
 
 
 @Composable
 fun TextField(
-    modifier: Modifier = Modifier,
     label: String = "example",
     hint: String = "example",
     value: String,
@@ -108,8 +105,8 @@ fun PasswordTextField(
                         id = if (passwordVisible) R.drawable.ic_eye_off
                         else R.drawable.ic_eye_on
                     ),
-                    contentDescription = if (passwordVisible) "Скрыть пароль"
-                    else "Показать пароль",
+                    contentDescription = if (passwordVisible) "Hide Password"
+                    else "Show Password",
                 )
             }
         },

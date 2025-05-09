@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.fitnesstracker.presentation.ui.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,9 +11,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fitnesstracker.ui.theme.Black
-import com.example.fitnesstracker.ui.theme.FitnesstrackerTheme
-import com.example.fitnesstracker.ui.theme.Grey
+import com.example.fitnesstracker.presentation.ui.theme.Black
+import com.example.fitnesstracker.presentation.ui.theme.FitnesstrackerTheme
+import com.example.fitnesstracker.presentation.ui.theme.Grey
 
 @Composable
 @Preview
