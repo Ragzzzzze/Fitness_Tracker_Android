@@ -1,24 +1,25 @@
 package com.example.fitnesstracker.data.repositories
 
 import com.example.fitnesstracker.domain.UserRepository
+import com.example.fitnesstracker.domain.dao.UserDao
 import com.example.fitnesstracker.domain.entities.User
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class UserRepositoryImpl @Inject constructor() : UserRepository{
-    private val users = mutableListOf<User>()
 
-    override fun registerUser(user: User) {
-        if (users.any {it.login == user.login}) {
-            throw Exception("Error with registration")
+@Singleton
+class UserRepositoryImpl @Inject constructor(
+    private val userDao: UserDao
+) : UserRepository {
+
+    override suspend fun registerUser(user: User) {
+        if (userDao.getUserByLogin(user.login) != null) {
+            throw Exception("Пользователь с таким логином уже существует")
         }
-        else {
-            users.add(user)
-        }
+        userDao.insertUser(user)
     }
 
-    override fun loginUser(login: String, password: String): User? {
-        return users.find { it.login == login && it.password == password}
+    override suspend fun loginUser(login: String, password: String): User? {
+        return userDao.getUser(login, password)
     }
 }
