@@ -27,11 +27,9 @@ import com.example.fitnesstracker.R
 import com.example.fitnesstracker.presentation.ui.theme.Grey
 import com.example.fitnesstracker.presentation.ui.theme.Primary
 
-//TODO(strings to xml)
 
 @Composable
 fun TextField(
-    modifier: Modifier = Modifier,
     label: String = "example",
     hint: String = "example",
     value: String,
@@ -107,8 +105,8 @@ fun PasswordTextField(
                         id = if (passwordVisible) R.drawable.ic_eye_off
                         else R.drawable.ic_eye_on
                     ),
-                    contentDescription = if (passwordVisible) "Скрыть пароль"
-                    else "Показать пароль",
+                    contentDescription = if (passwordVisible) "Hide Password"
+                    else "Show Password",
                 )
             }
         },

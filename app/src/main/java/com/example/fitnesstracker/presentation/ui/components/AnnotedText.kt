@@ -5,7 +5,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -13,8 +12,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.fitnesstracker.R
 import com.example.fitnesstracker.presentation.ui.theme.Primary
+import com.example.fitnesstracker.res.AppStrings.Companion
 
 
 @Composable
@@ -23,7 +22,7 @@ fun TermsAndPolicyText() {
     val uriHandler = LocalUriHandler.current
 
     val annotatedText = buildAnnotatedString {
-        append(stringResource(R.string.registration_screen_1st_part))
+        append(Companion.REGISTRATION_SCREEN_1ST_PART)
         append(" ")
 
         pushStringAnnotation(
@@ -35,12 +34,12 @@ fun TermsAndPolicyText() {
                 color = Primary,
             )
         ) {
-            append(stringResource(R.string.registration_screen_privacy_policy))
+            append(Companion.REGISTRATION_SCREEN_PRIVACY_POLICY)
         }
         pop()
 
         append(" ")
-        append(stringResource(R.string.registration_screen_2nd_part))
+        append(Companion.REGISTRATION_SCREEN_2ND_PART)
         append(" ")
 
         pushStringAnnotation(
@@ -52,7 +51,7 @@ fun TermsAndPolicyText() {
                 color = Primary
             )
         ) {
-            append(stringResource(R.string.registration_screen_terms_of_use))
+            append(Companion.REGISTRATION_SCREEN_TERMS_OF_USE)
         }
         pop()
         append(".")

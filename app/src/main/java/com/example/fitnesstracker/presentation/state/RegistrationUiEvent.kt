@@ -1,13 +1,10 @@
 package com.example.fitnesstracker.presentation.state
 
-data class RegistrationUiState (
-    val login: String = "",
-    val name: String = "",
-    val password: String = "",
-    val repeatedPassword: String = "",
-    val gender: String = "",
-
-    val isLoading: Boolean = false,
-    val registrationSuccess: Boolean = false,
-    val error: String? = null
-)
+sealed class RegistrationUiEvent {
+    data class LoginChanged(val value: String) : RegistrationUiEvent()
+    data class NameChanged(val value: String) : RegistrationUiEvent()
+    data class PasswordChanged(val value: String) : RegistrationUiEvent()
+    data class RepeatedPasswordChanged(val value: String) : RegistrationUiEvent()
+    data class GenderChanged(val value: String) : RegistrationUiEvent()
+    object Submit : RegistrationUiEvent()
+}

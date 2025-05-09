@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,30 +25,36 @@ import com.example.fitnesstracker.presentation.ui.components.PasswordTextField
 import com.example.fitnesstracker.presentation.ui.components.TextField
 import com.example.fitnesstracker.presentation.ui.components.TopBarExit
 import com.example.fitnesstracker.R
+import com.example.fitnesstracker.domain.entities.User
 import com.example.fitnesstracker.presentation.state.LoginUiEvent
+import com.example.fitnesstracker.presentation.ui.theme.White
 import com.example.fitnesstracker.presentation.viewmodels.LoginViewModel
+import com.example.fitnesstracker.res.AppStrings.Companion
 
 
 @Composable
 @Preview
 fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
-    onLoginSuccess: () -> Unit = {},
+    onLoginSuccess: (User) -> Unit = {},
     onBackClick: () -> Unit = {}
 ) {
     val state by viewModel.uiState.collectAsState()
 
     LaunchedEffect(state.loginSuccess) {
         if (state.loginSuccess) {
-            onLoginSuccess()
+            state.currentUser?.let { user ->
+                onLoginSuccess(user)
+            }
         }
     }
 
     Scaffold(
+        containerColor = White,
         topBar = {
             TopBarExit(
-                text = stringResource(R.string.login_screen_enter),
-                onClick = onBackClick
+                text = Companion.LOGIN_SCREEN_ENTER,
+                onClick = onBackClick,
             )
         },
         content = { padding ->
@@ -62,7 +67,7 @@ fun LoginScreen(
                 verticalArrangement = Arrangement.Top
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.welcome_image),
+                    painter = painterResource(R.drawable.welcome_image),
                     contentDescription = "Welcome image",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -73,20 +78,20 @@ fun LoginScreen(
                 TextField(
                     value = state.login,
                     onValueChange = { viewModel.sendEvent(LoginUiEvent.LoginChanged(it)) },
-                    label = stringResource(R.string.registration_screen_login),
-                    hint = stringResource(R.string.registration_screen_login)
+                    label = Companion.REGISTRATION_SCREEN_LOGIN,
+                    hint = Companion.REGISTRATION_SCREEN_LOGIN
                 )
 
                 PasswordTextField(
                     value = state.password,
                     onValueChange = { viewModel.sendEvent(LoginUiEvent.PasswordChanged(it)) },
-                    label = stringResource(R.string.registration_screen_password),
-                    hint = stringResource(R.string.registration_screen_password),
+                    label = Companion.REGISTRATION_SCREEN_PASSWORD,
+                    hint = Companion.REGISTRATION_SCREEN_PASSWORD,
                 )
 
                 ButtonClassic(
                     modifier = Modifier,
-                    text = stringResource(R.string.login_screen_to_enter),
+                    text = Companion.LOGIN_SCREEN_TO_ENTER,
                     onClick = { viewModel.sendEvent(LoginUiEvent.Submit) }
                 )
 

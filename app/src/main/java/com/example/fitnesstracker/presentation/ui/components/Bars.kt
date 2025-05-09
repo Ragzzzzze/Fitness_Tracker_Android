@@ -7,18 +7,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.fitnesstracker.presentation.ui.theme.Primary
+import com.example.fitnesstracker.presentation.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
 fun TopBarExit (
-    modifier: Modifier = Modifier,
     text: String = "example",
     onClick: () -> Unit = {},
 ) {
@@ -35,10 +35,13 @@ fun TopBarExit (
             IconButton(onClick = onClick) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Назад",
+                    contentDescription = "Back",
                     tint = Primary
                 )
             }
-        }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = White
+        )
     )
 }

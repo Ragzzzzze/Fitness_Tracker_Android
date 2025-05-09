@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -23,9 +22,10 @@ import com.example.fitnesstracker.presentation.ui.components.TermsAndPolicyText
 import com.example.fitnesstracker.presentation.ui.components.TopBarExit
 import com.example.fitnesstracker.presentation.ui.theme.Black
 import com.example.fitnesstracker.presentation.ui.theme.Primary
-import com.example.fitnesstracker.R
 import com.example.fitnesstracker.presentation.state.RegistrationUiEvent
+import com.example.fitnesstracker.presentation.ui.theme.White
 import com.example.fitnesstracker.presentation.viewmodels.RegistrationViewModel
+import com.example.fitnesstracker.res.AppStrings.Companion
 
 
 @Composable
@@ -38,9 +38,10 @@ fun RegistrationScreen(
     val state by viewModel.uiState.collectAsState()
 
     val genders = listOf(
-        stringResource(R.string.male),
-        stringResource(R.string.female),
-        stringResource(R.string.other))
+        Companion.MALE,
+        Companion.FEMALE,
+        Companion.OTHER
+    )
 
     LaunchedEffect(state.registrationSuccess) {
         if (state.registrationSuccess) {
@@ -49,10 +50,11 @@ fun RegistrationScreen(
     }
 
     Scaffold(
+        containerColor = White,
         topBar = {
             TopBarExit(
-                text = stringResource(R.string.registration_screen_bar),
-                onClick = onBackClick
+                text = Companion.REGISTRATION_SCREEN_BAR,
+                onClick = onBackClick,
             )
         },
         content = { padding ->
@@ -66,32 +68,32 @@ fun RegistrationScreen(
                     value = state.login,
                     onValueChange = { viewModel.sendEvent(RegistrationUiEvent.LoginChanged(it)) },
 
-                    label = stringResource(R.string.registration_screen_login),
-                    hint = stringResource(R.string.registration_screen_login)
+                    label = Companion.REGISTRATION_SCREEN_LOGIN,
+                    hint = Companion.REGISTRATION_SCREEN_LOGIN
                 )
 
                 TextField(
                     value = state.name,
                     onValueChange = { viewModel.sendEvent(RegistrationUiEvent.NameChanged(it)) },
 
-                    label = stringResource(R.string.registration_screen_nickname),
-                    hint = stringResource(R.string.registration_screen_nickname)
+                    label = Companion.REGISTRATION_SCREEN_NICKNAME,
+                    hint = Companion.REGISTRATION_SCREEN_NICKNAME
                 )
 
                 PasswordTextField(
                     value = state.password,
                     onValueChange = { viewModel.sendEvent(RegistrationUiEvent.PasswordChanged(it)) },
 
-                    label = stringResource(R.string.registration_screen_password),
-                    hint = stringResource(R.string.registration_screen_password),
+                    label = Companion.REGISTRATION_SCREEN_PASSWORD,
+                    hint = Companion.REGISTRATION_SCREEN_PASSWORD,
                 )
 
                 PasswordTextField(
                     value = state.repeatedPassword,
                     onValueChange = { viewModel.sendEvent(RegistrationUiEvent.RepeatedPasswordChanged(it)) },
 
-                    label = stringResource(R.string.registration_screen_password_second),
-                    hint = stringResource(R.string.registration_screen_password_second),
+                    label = Companion.REGISTRATION_SCREEN_PASSWORD_SECOND,
+                    hint = Companion.REGISTRATION_SCREEN_PASSWORD_SECOND,
                 )
 
                 Column(
@@ -138,7 +140,7 @@ fun RegistrationScreen(
 
                     ButtonClassic(
                         modifier = Modifier,
-                        text = stringResource(R.string.welcome_screen_button),
+                        text = Companion.WELCOME_SCREEN_BUTTON,
                         onClick = { viewModel.sendEvent(RegistrationUiEvent.Submit) }
                     )
 

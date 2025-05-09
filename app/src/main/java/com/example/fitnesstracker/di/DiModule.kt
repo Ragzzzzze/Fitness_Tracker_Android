@@ -1,6 +1,8 @@
 package com.example.fitnesstracker.di
 
+import com.example.fitnesstracker.data.repositories.ActivityRepositoryImpl
 import com.example.fitnesstracker.data.repositories.UserRepositoryImpl
+import com.example.fitnesstracker.domain.ActivityRepository
 import com.example.fitnesstracker.domain.UserRepository
 import dagger.Binds
 import dagger.Module
@@ -16,4 +18,10 @@ abstract class RepositoryModule {
     abstract fun bindUserRepository(
         impl: UserRepositoryImpl
     ): UserRepository
+
+    @Binds
+    abstract fun bindActivityRepository(
+        impl : ActivityRepositoryImpl
+    ) : ActivityRepository
 }
+

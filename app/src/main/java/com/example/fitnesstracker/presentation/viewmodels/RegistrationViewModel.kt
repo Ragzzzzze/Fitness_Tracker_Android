@@ -6,6 +6,7 @@ import com.example.fitnesstracker.domain.UserRepository
 import com.example.fitnesstracker.domain.entities.User
 import com.example.fitnesstracker.presentation.state.RegistrationUiEvent
 import com.example.fitnesstracker.presentation.state.RegistrationUiState
+import com.example.fitnesstracker.res.AppStrings.Companion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -72,7 +73,7 @@ class RegistrationViewModel @Inject constructor(
         val currentState = _uiState.value
 
         if (currentState.password != currentState.repeatedPassword) {
-            _uiState.update { it.copy(error = "Пароли не совпадают") }
+            _uiState.update { it.copy(error = Companion.REGISTRATION_SCREEN_PASSWORD_ERROR) }
             return
         }
 

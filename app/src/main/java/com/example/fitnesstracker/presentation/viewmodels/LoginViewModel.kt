@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.fitnesstracker.domain.UserRepository
 import com.example.fitnesstracker.presentation.state.LoginUiEvent
 import com.example.fitnesstracker.presentation.state.LoginUiState
+import com.example.fitnesstracker.res.AppStrings.Companion
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -52,7 +53,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    private fun login() {
+    fun login() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
 
@@ -61,14 +62,21 @@ class LoginViewModel @Inject constructor(
                     login = _uiState.value.login,
                     password = _uiState.value.password
                 )
-
                 if (user != null) {
-                    _uiState.update { it.copy(loginSuccess = true) }
-                } else {
-                    _uiState.update { it.copy(error = "Неверный логин или пароль") }
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            loginSuccess = true,
+                            currentUser = user
+                        )
+                    }
                 }
+                else {
+                    _uiState.update { it.copy(error = Companion.LOGIN_SCREEN_ERROR) }
+                }
+
             } catch (e: Exception) {
-                _uiState.update { it.copy(error = "Ошибка авторизации: ${e.message}") }
+                _uiState.update { it.copy(error = "${Companion.LOGIN_SCREEN_ERROR_AUTH} ${e.message}") }
             } finally {
                 _uiState.update { it.copy(isLoading = false) }
             }
