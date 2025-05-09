@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.fitnesstracker.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -16,7 +16,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.fitnesstracker.ui.theme.FitnesstrackerTheme
+import com.example.fitnesstracker.presentation.ui.components.ButtonClassic
+import com.example.fitnesstracker.presentation.ui.components.GrayText
+import com.example.fitnesstracker.presentation.ui.components.LargeText
+import com.example.fitnesstracker.presentation.ui.components.LinkButton
+import com.example.fitnesstracker.presentation.ui.theme.FitnesstrackerTheme
+import com.example.fitnesstracker.R
 
 @Composable
 @Preview

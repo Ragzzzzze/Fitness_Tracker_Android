@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.fitnesstracker.presentation.ui.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.fitnesstracker.ui.theme.Primary
+import com.example.fitnesstracker.presentation.ui.theme.Primary
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

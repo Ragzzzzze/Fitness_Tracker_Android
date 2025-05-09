@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.fitnesstracker.presentation.ui.components
 
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.MaterialTheme
@@ -14,7 +14,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.fitnesstracker.R
-import com.example.fitnesstracker.ui.theme.Primary
+import com.example.fitnesstracker.presentation.ui.theme.Primary
 
 
 @Composable

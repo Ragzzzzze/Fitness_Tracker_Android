@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.fitnesstracker.presentation.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,9 +13,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.fitnesstracker.ui.theme.FitnesstrackerTheme
-import com.example.fitnesstracker.ui.theme.Primary
-import com.example.fitnesstracker.ui.theme.White
+import com.example.fitnesstracker.presentation.ui.theme.FitnesstrackerTheme
+import com.example.fitnesstracker.presentation.ui.theme.Primary
+import com.example.fitnesstracker.presentation.ui.theme.White
 
 @Composable
 @Preview
@@ -23,8 +23,8 @@ fun ButtonClassic (
     modifier: Modifier = Modifier,
     text: String = "example",
     horizontalPadding: Int = 0,
-    onClick: () -> Unit = {}
-
+    onClick: () -> Unit = {},
+//    TODO("isLoading parameter")
 ) {
     FitnesstrackerTheme {
         Button(
